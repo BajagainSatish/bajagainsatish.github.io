@@ -31,6 +31,35 @@ body {
     font-size: 1.1rem;
 }
 
+.contact-links {
+    margin-top: 0.5em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+    font-size: 0.95em;
+}
+
+.contact-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.contact-links a:hover {
+    text-decoration: underline;
+}
+
+.project-link .project-card {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-link .project-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
 /* Projects grid: side-by-side layout */
 .projects-container {
     display: grid;
