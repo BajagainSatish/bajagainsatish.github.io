@@ -520,6 +520,76 @@
         }
       }
 
+      /* DESIGN SECTION */
+      .design-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      .design-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 14px;
+        overflow: hidden;
+        transition:
+          transform 0.25s,
+          border-color 0.25s,
+          box-shadow 0.25s;
+        display: flex;
+        flex-direction: column;
+      }
+      .design-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(124, 58, 237, 0.5);
+        box-shadow: 0 12px 40px rgba(124, 58, 237, 0.15);
+      }
+      .design-thumb {
+        width: 100%;
+        aspect-ratio: 9/14;
+        object-fit: cover;
+        object-position: top;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+      .design-card:hover .design-thumb {
+        transform: scale(1.02);
+      }
+      .design-info {
+        padding: 1.3rem 1.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        flex: 1;
+      }
+      .design-info .card-tag {
+        align-self: flex-start;
+      }
+      .design-info h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 1.05rem;
+        font-weight: 700;
+      }
+      .design-info p {
+        font-size: 0.85rem;
+        color: var(--muted);
+        line-height: 1.5;
+        flex: 1;
+      }
+      .design-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-top: 0.8rem;
+        color: var(--purple-light);
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: gap 0.2s;
+      }
+      .design-link:hover {
+        gap: 0.7rem;
+      }
+
       /* RESPONSIVE */
       @media (max-width: 640px) {
         .nav-links {
@@ -534,18 +604,28 @@
         .about-strip {
           flex-direction: column;
         }
+        .design-grid {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
   <body>
     <!-- NAV -->
     <nav>
-      <a href="#" class="nav-logo">My Portfolio<span>.</span></a>
+      <a href="#" class="nav-logo">Satish<span>.</span></a>
       <ul class="nav-links">
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#design">Design</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="mailto:sttbjgn@gmail.com" class="nav-cta">Hire Me</a></li>
+        <li>
+          <a
+            href="/cdn-cgi/l/email-protection#a0d3d4d4c2cac7cee0c7cdc1c9cc8ec3cfcd"
+            class="nav-cta"
+            >Hire Me</a
+          >
+        </li>
       </ul>
     </nav>
 
@@ -559,7 +639,11 @@
       </p>
       <div class="hero-actions">
         <a href="#projects" class="btn-primary">View Projects</a>
-        <a href="mailto:sttbjgn@gmail.com" class="btn-outline">Get In Touch</a>
+        <a
+          href="/cdn-cgi/l/email-protection#4d3e39392f272a230d2a202c2421632e2220"
+          class="btn-outline"
+          >Get In Touch</a
+        >
       </div>
     </section>
 
@@ -702,6 +786,107 @@
       </div>
     </section>
 
+    <!-- DESIGN -->
+    <section class="content" id="design">
+      <div class="section-label">Design</div>
+      <h2 class="section-title">UI / UX <em>Design Work</em></h2>
+      <p class="section-sub">
+        Concept designs and visual explorations built in Figma — from mobile
+        apps to event branding and SaaS interfaces.
+      </p>
+
+      <div class="design-grid">
+        <div class="design-card">
+          <img
+            src="PULSERUN.png"
+            alt="PULSERUN fitness app design"
+            class="design-thumb"
+          />
+          <div class="design-info">
+            <span class="card-tag">Mobile App UI</span>
+            <h3>PULSERUN</h3>
+            <p>
+              Fitness tracking app concept. Dark, high-energy UI with real-time
+              run stats, heart rate zones, and streak tracking.
+            </p>
+            <a
+              href="https://www.figma.com/design/yzRedD0DLefTXVURQQyQ3R/PULSERUN?node-id=0-1&p=f&t=RyFPHaVOLYUnkRHD-0"
+              target="_blank"
+              class="design-link"
+              >View in Figma →</a
+            >
+          </div>
+        </div>
+
+        <div class="design-card">
+          <img
+            src="SERENITY.png"
+            alt="SERENITY meditation app design"
+            class="design-thumb"
+          />
+          <div class="design-info">
+            <span class="card-tag">Mobile App UI</span>
+            <h3>SERENITY</h3>
+            <p>
+              Calm, minimal meditation app concept. Soft lavender tones with
+              sleep tracking, guided sessions, and focus timers.
+            </p>
+            <a
+              href="https://www.figma.com/design/eMA2OvBRXaR2BzBtbzkvQb/SERENITY?node-id=0-1&p=f&t=GKaADanhhBKkrMVM-0"
+              target="_blank"
+              class="design-link"
+              >View in Figma →</a
+            >
+          </div>
+        </div>
+
+        <div class="design-card">
+          <img
+            src="KATHSUMMIT.png"
+            alt="KATHSUMMIT tech conference poster design"
+            class="design-thumb"
+          />
+          <div class="design-info">
+            <span class="card-tag">Event Branding</span>
+            <h3>KATHSUMMIT 2025</h3>
+            <p>
+              Tech conference visual design for a Kathmandu-based event. Bold
+              typographic layout with speaker cards and schedule layout.
+            </p>
+            <a
+              href="https://www.figma.com/design/33xpMLWQ4ClzxFMhtfKak1/KATHSUMMIT?node-id=0-1&p=f&t=EXz9QJOZFTDDR9LU-0"
+              target="_blank"
+              class="design-link"
+              >View in Figma →</a
+            >
+          </div>
+        </div>
+
+        <div class="design-card">
+          <img
+            src="plane_saas_poster_1.png"
+            alt="Plane SaaS landing page design"
+            class="design-thumb"
+          />
+          <div class="design-info">
+            <span class="card-tag">SaaS Landing Page</span>
+            <h3>Plane — SaaS Website</h3>
+            <p>
+              Project management platform landing page concept. Editorial
+              typographic style with a clean dashboard preview and feature
+              breakdown.
+            </p>
+            <a
+              href="https://www.figma.com/design/ANzHFFU0KfYP6nQhzm5VJl/Plane-SaaS?node-id=1-2&t=bLoaqF4rjVKulCf6-0"
+              target="_blank"
+              class="design-link"
+              >View in Figma →</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SKILLS -->
     <section class="content" id="skills">
       <div class="section-label">Capabilities</div>
@@ -749,13 +934,15 @@
       <div class="about-text">
         <h2>Let's <em>work together</em></h2>
         <p>
-          Currently available for internships and freelance projects. I bring a
-          full-stack perspective — from backend APIs and databases to
-          interactive frontends and game systems. Based in Kathmandu, Nepal.
+          Currently available for freelance projects only. I bring a full-stack
+          perspective — from backend APIs and databases to interactive frontends
+          and game systems. Based in Lalitpur, Nepal.
         </p>
       </div>
       <div class="contact-links-row">
-        <a href="mailto:sttbjgn@gmail.com" class="contact-btn email"
+        <a
+          href="/cdn-cgi/l/email-protection#e39097978189848da3848e828a8fcd808c8e"
+          class="contact-btn email"
           >📧 Email Me</a
         >
         <a
