@@ -1,126 +1,785 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Satish Bajagain -- Portfolio</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Satish Bajagain — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0d0d1a;
+        --bg2: #13132b;
+        --purple: #7c3aed;
+        --purple-light: #a78bfa;
+        --accent: #c4b5fd;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --card-bg: #1a1a35;
+        --card-border: rgba(124, 58, 237, 0.2);
+        --star: #f8d044;
+      }
 
-<!-- Header -->
-<header class="site-header">
-  <h1>Satish Bajagain</h1>
-  <p class="tagline">Software Engineer & Game Developer</p>
-  
-  <div class="contact-links">
-    <a href="mailto:sttbjgn@gmail.com">📧 sttbjgn@gmail.com</a>
-    <a href="tel:+9779840028627">📞 +977-9840028627</a>
-    <a href="https://github.com/BajagainSatish" target="_blank">🐱 GitHub</a>
-    <a href="https://www.linkedin.com/in/satish-bajagain-75a3b9254/" target="_blank">💼 LinkedIn</a>
-  </div>
-</header>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-<p style="text-align: center; font-size: 0.9em; margin-bottom: 2em;">
-  🔗 Click on a project card to view the code on GitHub.
-</p>
+      html {
+        scroll-behavior: smooth;
+      }
 
-<!-- Projects -->
-<main class="projects-container">
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+      }
 
-  <a href="https://github.com/BajagainSatish/ECommerceWebsite" target="_blank" class="project-link">
-    <section class="project-card">
-      <h2>Full‑Stack E‑commerce Website</h2>
-      <ul>
-        <li>Developed using ASP.NET Core and Entity Framework with RESTful API architecture.</li>
-        <li>Implemented CRUD operations for products, brands, and categories.</li>
-        <li>Designed an admin dashboard (CMS) for backend management and control.</li>
-        <li>Integrated a dynamic JavaScript shopping cart with quantity tracking and form validation.</li>
-        <li>Utilized local storage for maintaining cart state across sessions.</li>
+      /* Background blobs */
+      body::before {
+        content: "";
+        position: fixed;
+        top: -200px;
+        left: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(124, 58, 237, 0.18) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        bottom: -200px;
+        right: -200px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(167, 139, 250, 0.12) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 6vw;
+        background: rgba(13, 13, 26, 0.85);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(124, 58, 237, 0.12);
+      }
+      .nav-logo {
+        font-family: "Syne", sans-serif;
+        font-weight: 800;
+        font-size: 1.2rem;
+        color: var(--text);
+        text-decoration: none;
+        letter-spacing: -0.5px;
+      }
+      .nav-logo span {
+        color: var(--purple-light);
+      }
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--text);
+      }
+      .nav-cta {
+        background: var(--purple);
+        color: #fff !important;
+        padding: 0.5rem 1.2rem;
+        border-radius: 6px;
+        transition: background 0.2s !important;
+      }
+      .nav-cta:hover {
+        background: #6d28d9 !important;
+        color: #fff !important;
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 8rem 6vw 4rem;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: rgba(124, 58, 237, 0.15);
+        border: 1px solid rgba(124, 58, 237, 0.35);
+        color: var(--accent);
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 0.35rem 1rem;
+        border-radius: 99px;
+        margin-bottom: 1.8rem;
+        animation: fadeUp 0.6s ease both;
+      }
+      .hero-badge::before {
+        content: "✦";
+        font-size: 0.7rem;
+      }
+      .hero h1 {
+        font-family: "Syne", sans-serif;
+        font-size: clamp(2.8rem, 6vw, 5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -1.5px;
+        margin-bottom: 1.2rem;
+        animation: fadeUp 0.6s 0.1s ease both;
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--purple-light);
+      }
+      .hero p {
+        font-size: 1.1rem;
+        color: var(--muted);
+        max-width: 560px;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+        animation: fadeUp 0.6s 0.2s ease both;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        animation: fadeUp 0.6s 0.3s ease both;
+      }
+      .btn-primary {
+        background: var(--purple);
+        color: #fff;
+        padding: 0.75rem 1.8rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .btn-primary:hover {
+        background: #6d28d9;
+        transform: translateY(-2px);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--text);
+        padding: 0.75rem 1.8rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .btn-outline:hover {
+        border-color: var(--purple-light);
+        transform: translateY(-2px);
+      }
+
+      /* TRUSTED STRIP */
+      .trusted-strip {
+        position: relative;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.04);
+        border-top: 1px solid rgba(255, 255, 255, 0.07);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        padding: 1.4rem 6vw;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .trusted-label {
+        font-size: 0.8rem;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+      .trusted-items {
+        display: flex;
+        gap: 2.5rem;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .trusted-item {
+        font-family: "Syne", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.35);
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+      }
+
+      /* SECTIONS */
+      section.content {
+        position: relative;
+        z-index: 1;
+        padding: 5rem 6vw;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      .section-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--purple-light);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 0.8rem;
+      }
+      .section-label::before {
+        content: "✦";
+        font-size: 0.65rem;
+      }
+      .section-title {
+        font-family: "Syne", sans-serif;
+        font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+        font-weight: 800;
+        letter-spacing: -0.8px;
+        margin-bottom: 0.6rem;
+      }
+      .section-title em {
+        font-style: normal;
+        color: var(--purple-light);
+      }
+      .section-sub {
+        color: var(--muted);
+        font-size: 1rem;
+        max-width: 520px;
+        line-height: 1.6;
+        margin-bottom: 3rem;
+      }
+
+      /* PROJECTS GRID */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 1.5rem;
+      }
+      .project-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 14px;
+        padding: 1.8rem;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition:
+          transform 0.25s,
+          border-color 0.25s,
+          box-shadow 0.25s;
+        position: relative;
+        overflow: hidden;
+      }
+      .project-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--purple), var(--purple-light));
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+      .project-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(124, 58, 237, 0.5);
+        box-shadow: 0 12px 40px rgba(124, 58, 237, 0.15);
+      }
+      .project-card:hover::before {
+        opacity: 1;
+      }
+      .card-tag {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 600;
+        background: rgba(124, 58, 237, 0.18);
+        color: var(--accent);
+        padding: 0.2rem 0.7rem;
+        border-radius: 99px;
+        margin-bottom: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+      }
+      .project-card h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+      }
+      .project-card ul {
+        list-style: none;
+        padding: 0;
+      }
+      .project-card ul li {
+        font-size: 0.88rem;
+        color: var(--muted);
+        line-height: 1.6;
+        padding: 0.25rem 0;
+        padding-left: 1rem;
+        position: relative;
+      }
+      .project-card ul li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--purple-light);
+        font-size: 0.75rem;
+      }
+      .card-arrow {
+        position: absolute;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(124, 58, 237, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .project-card:hover .card-arrow {
+        background: var(--purple);
+        transform: translate(2px, -2px);
+      }
+
+      /* SKILLS */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+      .skill-pill {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 10px;
+        padding: 1rem 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: border-color 0.2s;
+      }
+      .skill-pill:hover {
+        border-color: rgba(124, 58, 237, 0.4);
+      }
+      .skill-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--purple-light);
+        flex-shrink: 0;
+      }
+
+      /* ABOUT / CONTACT STRIP */
+      .about-strip {
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(135deg, #1a1a35 0%, #0f0f25 100%);
+        border-top: 1px solid rgba(124, 58, 237, 0.15);
+        border-bottom: 1px solid rgba(124, 58, 237, 0.15);
+        padding: 4rem 6vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 2rem;
+        max-width: 100%;
+      }
+      .about-text {
+        max-width: 600px;
+      }
+      .about-text h2 {
+        font-family: "Syne", sans-serif;
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+        font-weight: 800;
+        margin-bottom: 0.8rem;
+        letter-spacing: -0.5px;
+      }
+      .about-text h2 em {
+        font-style: normal;
+        color: var(--purple-light);
+      }
+      .about-text p {
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 0.95rem;
+      }
+      .contact-links-row {
+        display: flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+      .contact-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        font-size: 0.88rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: transform 0.2s;
+      }
+      .contact-btn:hover {
+        transform: translateY(-2px);
+      }
+      .contact-btn.email {
+        background: var(--purple);
+        color: #fff;
+      }
+      .contact-btn.github {
+        background: rgba(255, 255, 255, 0.07);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .contact-btn.linkedin {
+        background: rgba(255, 255, 255, 0.07);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* FOOTER */
+      footer {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 2rem 6vw;
+        font-size: 0.85rem;
+        color: var(--muted);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      footer a {
+        color: var(--purple-light);
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      /* ANIMATIONS */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 640px) {
+        .nav-links {
+          display: none;
+        }
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+        .skills-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .about-strip {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <a href="#" class="nav-logo">My Portfolio<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="mailto:sttbjgn@gmail.com" class="nav-cta">Hire Me</a></li>
       </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-badge">Available for opportunities</div>
+      <h1>Full-Stack Developer<br />&amp; <em>Game Engineer</em></h1>
+      <p>
+        Building end-to-end web applications and interactive experiences. 3+
+        years across MERN, Next.js, Unity, and data processing systems.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="mailto:sttbjgn@gmail.com" class="btn-outline">Get In Touch</a>
+      </div>
     </section>
-  </a>
 
-  <a href="https://github.com/BajagainSatish/MLFinalProject_NepaliLetterDetection" target="_blank" class="project-link">
-    <section class="project-card">
-      <h2>ML: Nepali Letter Detection</h2>
-      <ul>
-        <li>Built with YOLOv4 in Python using the TensorFlow framework.</li>
-        <li>Trained on a custom dataset of handwritten Nepali characters.</li>
-        <li>Achieved over 90% mean Average Precision (mAP).</li>
-        <li>Handled preprocessing, augmentation, training, and evaluation.</li>
-      </ul>
+    <!-- TRUSTED STRIP -->
+    <div class="trusted-strip">
+      <span class="trusted-label">Technologies I work with</span>
+      <div class="trusted-items">
+        <span class="trusted-item">Next.js</span>
+        <span class="trusted-item">React</span>
+        <span class="trusted-item">Node.js</span>
+        <span class="trusted-item">MongoDB</span>
+        <span class="trusted-item">Unity 3D</span>
+        <span class="trusted-item">Python</span>
+        <span class="trusted-item">C#</span>
+        <span class="trusted-item">Figma</span>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <section class="content" id="projects">
+      <div class="section-label">Work</div>
+      <h2 class="section-title">Featured <em>Projects</em></h2>
+      <p class="section-sub">
+        A selection of projects spanning full-stack web development, machine
+        learning, and game engineering.
+      </p>
+
+      <div class="projects-grid">
+        <a
+          href="https://github.com/BajagainSatish/ECommerceWebsite"
+          target="_blank"
+          class="project-card"
+        >
+          <span class="card-tag">Full-Stack Web</span>
+          <h3>Full-Stack E-commerce Website</h3>
+          <ul>
+            <li>
+              ASP.NET Core + Entity Framework with RESTful API architecture
+            </li>
+            <li>CRUD operations for products, brands, and categories</li>
+            <li>Admin dashboard (CMS) for backend management</li>
+            <li>Dynamic JS shopping cart with local storage persistence</li>
+          </ul>
+          <div class="card-arrow">↗</div>
+        </a>
+
+        <a
+          href="https://github.com/BajagainSatish/MLFinalProject_NepaliLetterDetection"
+          target="_blank"
+          class="project-card"
+        >
+          <span class="card-tag">Machine Learning</span>
+          <h3>ML: Nepali Letter Detection</h3>
+          <ul>
+            <li>YOLOv4 in Python using TensorFlow framework</li>
+            <li>Trained on custom handwritten Nepali character dataset</li>
+            <li>Achieved 90%+ mean Average Precision (mAP)</li>
+            <li>
+              Full pipeline: preprocessing, augmentation, training, evaluation
+            </li>
+          </ul>
+          <div class="card-arrow">↗</div>
+        </a>
+
+        <a
+          href="https://github.com/BajagainSatish/SHIPMOVEMENT_AGS"
+          target="_blank"
+          class="project-card"
+        >
+          <span class="card-tag">Game Dev</span>
+          <h3>Unity Ship Movement Game</h3>
+          <ul>
+            <li>Rigidbody-based physics for smooth 3D navigation</li>
+            <li>Collision detection and responsive ship controls</li>
+            <li>UI overlays for health and ammunition tracking</li>
+          </ul>
+          <div class="card-arrow">↗</div>
+        </a>
+
+        <a
+          href="https://github.com/BajagainSatish/AGS_guitarALL_EPICS"
+          target="_blank"
+          class="project-card"
+        >
+          <span class="card-tag">Game Dev</span>
+          <h3>Unity 3D Guitar Simulator</h3>
+          <ul>
+            <li>Interactive 3D guitar with pluckable strings</li>
+            <li>User inputs mapped to animations and synthesized audio</li>
+            <li>Real-time sound and visual feedback integration</li>
+          </ul>
+          <div class="card-arrow">↗</div>
+        </a>
+
+        <a
+          href="https://github.com/BajagainSatish/OceanOdyssesy/"
+          target="_blank"
+          class="project-card"
+        >
+          <span class="card-tag">Game Dev</span>
+          <h3>Warship Havoc</h3>
+          <ul>
+            <li>3D naval battle game with multiple ship classes</li>
+            <li>Automated targeting and firing systems</li>
+            <li>A* pathfinding for AI-based ship navigation</li>
+            <li>Real-time combat with performance optimization</li>
+          </ul>
+          <div class="card-arrow">↗</div>
+        </a>
+
+        <div class="project-card">
+          <span class="card-tag">Game Dev</span>
+          <h3>Unity Card Game</h3>
+          <ul>
+            <li>Turn-based card game in Unity and C#</li>
+            <li>Custom deck management and drag-and-drop cards</li>
+            <li>Complete game state and score tracking system</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <span class="card-tag">Game Dev</span>
+          <h3>Unity Music / MIDI-Driven Game</h3>
+          <ul>
+            <li>Interactive experience responsive to live MIDI input</li>
+            <li>Real-time audio parsing triggering in-game visual effects</li>
+            <li>Rhythm-based gameplay using audio-note mapping</li>
+          </ul>
+        </div>
+
+        <div class="project-card">
+          <span class="card-tag">Game Dev</span>
+          <h3>Unity 3D Keyboard Simulator</h3>
+          <ul>
+            <li>Fully functional 3D keyboard with playable notes</li>
+            <li>Key press triggers animations and sound playback</li>
+            <li>Dynamic note visualizations for real-time feedback</li>
+          </ul>
+        </div>
+      </div>
     </section>
-  </a>
 
-  <a href="https://github.com/BajagainSatish/SHIPMOVEMENT_AGS" target="_blank" class="project-link">
-    <section class="project-card">
-      <h2>Unity Ship Movement Game</h2>
-      <ul>
-        <li>Implemented Rigidbody-based physics for smooth 3D navigation.</li>
-        <li>Added collision detection and responsive ship controls.</li>
-        <li>Developed UI overlays to display health and ammunition levels.</li>
-        <li>Focused on balancing gameplay mechanics and immersive feel.</li>
-      </ul>
+    <!-- SKILLS -->
+    <section class="content" id="skills">
+      <div class="section-label">Capabilities</div>
+      <h2 class="section-title">Skills &amp; <em>Tools</em></h2>
+      <p class="section-sub">
+        A broad technical toolkit built across web development, game
+        engineering, data processing, and design.
+      </p>
+      <div class="skills-grid">
+        <div class="skill-pill">
+          <span class="skill-dot"></span>React / Next.js
+        </div>
+        <div class="skill-pill">
+          <span class="skill-dot"></span>Node.js / Express
+        </div>
+        <div class="skill-pill"><span class="skill-dot"></span>MongoDB</div>
+        <div class="skill-pill"><span class="skill-dot"></span>TypeScript</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Python</div>
+        <div class="skill-pill"><span class="skill-dot"></span>C# / .NET</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Unity 3D</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Blender</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Figma</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Photoshop</div>
+        <div class="skill-pill"><span class="skill-dot"></span>Canva</div>
+        <div class="skill-pill">
+          <span class="skill-dot"></span>Git / Docker
+        </div>
+        <div class="skill-pill">
+          <span class="skill-dot"></span>pandas / NumPy
+        </div>
+        <div class="skill-pill">
+          <span class="skill-dot"></span>Scrapy / BeautifulSoup
+        </div>
+        <div class="skill-pill">
+          <span class="skill-dot"></span>Leaflet.js / OSM
+        </div>
+        <div class="skill-pill">
+          <span class="skill-dot"></span>RESTful APIs
+        </div>
+      </div>
     </section>
-  </a>
 
-  <a href="https://github.com/BajagainSatish/AGS_guitarALL_EPICS" target="_blank" class="project-link">
-    <section class="project-card">
-      <h2>Unity 3D Guitar Simulator</h2>
-      <ul>
-        <li>Created an interactive 3D guitar with pluckable strings.</li>
-        <li>Mapped user inputs to animations and synthesized audio playback.</li>
-        <li>Integrated real-time sound and visual feedback.</li>
-      </ul>
-    </section>
-  </a>
+    <!-- ABOUT / CONTACT -->
+    <div class="about-strip" id="contact">
+      <div class="about-text">
+        <h2>Let's <em>work together</em></h2>
+        <p>
+          Currently available for internships and freelance projects. I bring a
+          full-stack perspective — from backend APIs and databases to
+          interactive frontends and game systems. Based in Kathmandu, Nepal.
+        </p>
+      </div>
+      <div class="contact-links-row">
+        <a href="mailto:sttbjgn@gmail.com" class="contact-btn email"
+          >📧 Email Me</a
+        >
+        <a
+          href="https://github.com/BajagainSatish"
+          target="_blank"
+          class="contact-btn github"
+          >🐱 GitHub</a
+        >
+        <a
+          href="https://www.linkedin.com/in/satish-bajagain-75a3b9254/"
+          target="_blank"
+          class="contact-btn linkedin"
+          >💼 LinkedIn</a
+        >
+      </div>
+    </div>
 
-  <a href="https://github.com/BajagainSatish/OceanOdyssesy/" target="_blank" class="project-link">
-    <section class="project-card">
-      <h2>Warship Havoc</h2>
-      <ul>
-        <li>Built a 3D naval battle game with multiple ship classes.</li>
-        <li>Implemented automated targeting and firing systems.</li>
-        <li>Utilized A* pathfinding for AI-based ship navigation.</li>
-        <li>Designed real-time combat scenarios with performance optimization.</li>
-      </ul>
-    </section>
-  </a>
-
-  <section class="project-card">
-    <h2>Unity Card Game</h2>
-    <ul>
-      <li>Developed a turn-based card game using Unity and C#.</li>
-      <li>Included features like custom deck management and drag-and-drop cards.</li>
-      <li>Managed complete game state and score tracking system.</li>
-    </ul>
-  </section>
-
-  <section class="project-card">
-    <h2>Unity Music/MIDI‑Driven Game</h2>
-    <ul>
-      <li>Created an interactive experience responsive to live MIDI input.</li>
-      <li>Parsed real-time audio to trigger in-game visual effects.</li>
-      <li>Designed rhythm-based gameplay using audio-note mapping.</li>
-    </ul>
-  </section>
-
-  <section class="project-card">
-    <h2>Unity 3D Keyboard Simulator</h2>
-    <ul>
-      <li>Built a fully functional 3D keyboard in Unity with playable notes.</li>
-      <li>Each key press triggers animations and sound playback.</li>
-      <li>Integrated dynamic note visualizations for real-time feedback.</li>
-    </ul>
-  </section>
-
-</main>
-
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <p>© 2025 Satish Bajagain — <a href="mailto:sttbjgn@gmail.com">Email me</a> — <a href="https://github.com/BajagainSatish">GitHub</a></p>
-  </footer>
-</body>
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        © 2026 Satish Bajagain &nbsp;·&nbsp;
+        <a href="mailto:sttbjgn@gmail.com">sttbjgn@gmail.com</a> &nbsp;·&nbsp;
+        <a href="tel:+9779840028627">+977-9840028627</a>
+      </p>
+    </footer>
+  </body>
 </html>
